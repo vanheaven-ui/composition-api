@@ -14,6 +14,7 @@ export default {
   setup() {
     const showPosts = ref(true);
     const posts = ref([]);
+    const error = ref(null);
 
     return {
       posts,
