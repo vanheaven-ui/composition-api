@@ -12,25 +12,14 @@
 <script>
 import { ref } from "@vue/reactivity";
 import PostList from "../components/PostList.vue";
+import getPosts from "../composables/getPosts";
+
 export default {
   components: { PostList },
   name: "Home",
   setup() {
     const showPosts = ref(true);
-    const posts = ref([]);
-    const error = ref(null);
-
-    const load = async () => {
-      try {
-        let res = await fetch("http://localhost:3000/posts");
-        if (!res.ok) {
-          throw Error("No data available");
-        }
-        posts.value = await res.json();
-      } catch (err) {
-        error.value = err.message;
-      }
-    };
+    const { posts, error, load } = getPosts();
 
     load();
 
