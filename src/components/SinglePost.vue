@@ -4,7 +4,6 @@
       <h3 class="post">{{ post.title }}</h3>
     </router-link>
     <p>{{ post.body.length >= 80 ? snippet : post.body }}</p>
-    <span v-for="tag in post.tags" :key="tag">#{{ tag }}</span>
   </div>
 </template>
 
