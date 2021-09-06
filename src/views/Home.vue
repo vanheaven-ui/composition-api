@@ -1,6 +1,8 @@
 <template>
   <h1>Home page</h1>
-  <PostList :posts="posts" />
+  <PostList :posts="posts" v-if="showPosts" />
+  <button @click="showPosts = !showPosts">Toggle posts</button>
+  <button @click="posts.pop()">Delete a post</button>
 </template>
 
 <script>
@@ -10,6 +12,7 @@ export default {
   components: { PostList },
   name: "Home",
   setup() {
+    const showPosts = ref(true);
     const posts = ref([
       {
         id: 1,
@@ -27,6 +30,7 @@ export default {
 
     return {
       posts,
+      showPosts,
     };
   },
 };
